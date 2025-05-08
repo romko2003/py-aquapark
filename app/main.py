@@ -18,7 +18,8 @@ class IntegerRange:
         if not isinstance(value, int):
             raise TypeError("Value must be an integer")
         if not (self.min_amount <= value <= self.max_amount):
-            raise ValueError(f"Value must be in range {self.min_amount}–{self.max_amount}")
+            raise ValueError(f"Value must be in range "
+                             f"{self.min_amount}–{self.max_amount}")
         setattr(instance, self.private_name, value)
 
 
@@ -59,9 +60,11 @@ class AdultSlideLimitationValidator(SlideLimitationValidator):
 
 # Гірка
 class Slide:
-    def __init__(self, name: str, limitation_class: Type[SlideLimitationValidator]) -> None:
+    def __init__(self, name: str, limitation_class:
+    Type[SlideLimitationValidator]) -> None:
         self.name: str = name
-        self.limitation_class: Type[SlideLimitationValidator] = limitation_class
+        self.limitation_class: (
+            Type)[SlideLimitationValidator] = limitation_class
 
     def can_access(self, visitor: Visitor) -> bool:
         try:
