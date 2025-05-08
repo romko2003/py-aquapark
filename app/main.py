@@ -10,7 +10,7 @@ class IntegerRange:
 
     def __set_name__(self, owner: type, name: str) -> None:
         self.private_name: str = f"_{name}"
-b
+
     def __get__(self, instance: object, owner: type) -> int:
         return getattr(instance, self.private_name)
 
